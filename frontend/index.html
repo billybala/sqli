@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SQLi (FastAPI + SQLite)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>SQL Injection</h1>
+        <p class="subtitle">
+          Demo de bypass de login: <code>/login-vuln</code> vs
+          <code>/login-safe</code>
+        </p>
+      </header>
+
+      <section class="card">
+        <div class="grid">
+          <div>
+            <label class="label">Usuario</label>
+            <input id="username" class="input" placeholder="admin" />
+          </div>
+          <div>
+            <label class="label">Password</label>
+            <input id="password" class="input" placeholder="admin123" />
+          </div>
+        </div>
+
+        <div class="row">
+          <button id="btnCredsAdmin" class="btn btn-secondary" type="button">
+            Credenciales admin
+          </button>
+          <button id="btnCredsUser" class="btn btn-secondary" type="button">
+            Credenciales user
+          </button>
+          <button id="btnPayload" class="btn btn-danger" type="button">
+            Payload SQLi
+          </button>
+          <button id="btnClear" class="btn btn-ghost" type="button">
+            Limpiar
+          </button>
+        </div>
+
+        <div class="row row-gap">
+          <button id="btnVuln" class="btn btn-danger" type="button">
+            Probar vulnerable
+          </button>
+          <button id="btnSafe" class="btn btn-success" type="button">
+            Probar mitigado
+          </button>
+          <div id="loading" class="badge hidden">Cargando…</div>
+        </div>
+
+        <p class="hint">
+          Payload típico (en password): <code>' OR '1'='1</code>
+        </p>
+      </section>
+
+      <section class="card">
+        <div class="meta">
+          <div>
+            <span class="metaKey">Endpoint:</span>
+            <span id="metaEndpoint">—</span>
+          </div>
+          <div>
+            <span class="metaKey">HTTP:</span> <span id="metaHttp">—</span>
+          </div>
+        </div>
+        <pre id="output" class="output">
+Rellena usuario/password y prueba ambos endpoints.</pre
+        >
+      </section>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
