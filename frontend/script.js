@@ -15,16 +15,20 @@ const loading = document.getElementById("loading");
 const metaEndpoint = document.getElementById("metaEndpoint");
 const metaHttp = document.getElementById("metaHttp");
 
+// Función que deshabilita los botones cuando la petición está en curso
 function setLoading(v){
   loading.classList.toggle("hidden", !v);
   [btnVuln, btnSafe, btnCredsAdmin, btnCredsUser, btnPayload, btnClear].forEach(b => b.disabled = v);
 }
+
 function setMeta(endpoint, http){
   metaEndpoint.textContent = endpoint ?? "—";
   metaHttp.textContent = http ?? "—";
 }
+
 function pretty(x){ return JSON.stringify(x, null, 2); }
 
+// Función que se encarga de llamar al endpoint pasado por parámetro para iniciar sesión
 async function login(path){
   const username = elUser.value.trim();
   const password = elPass.value;
@@ -59,6 +63,7 @@ async function login(path){
   }
 }
 
+// EVENTOS DE LOS BOTONES
 btnCredsAdmin.onclick = () => { elUser.value="admin"; elPass.value="admin123"; };
 btnCredsUser.onclick = () => { elUser.value="user"; elPass.value="user123"; };
 

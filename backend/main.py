@@ -29,6 +29,7 @@ class LoginBody(BaseModel):
     password: str
 
 
+# Endpoint vulnerable
 @app.post("/login-vuln")
 def login_vuln(body: LoginBody):
     """
@@ -55,6 +56,7 @@ def login_vuln(body: LoginBody):
 
     return {"ok": True, "user": dict(row), "note": "Sesión iniciada via endpoint VULNERABLE"}
 
+# Endpoint seguro
 @app.post("/login-safe")
 def login_safe(body: LoginBody):
     """
